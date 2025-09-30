@@ -22,6 +22,6 @@ The goal of this repository is to provide a **centralized collection of study ma
 1. Browse through the folders for relevant content.  
 2. Download or clone the repository to access offline.  
    ```bash
-   git clone https://github.com/YourUsername/DASSD-Hyderabad.git
+   git@github.com:AbhayJasrotia/DASSD-Hyderabad.git
 
 Made By Abhay and Prantik.
