@@ -6,9 +6,9 @@ It includes lecture resources, assignments, modules, and exam preparation materi
 ---
 
 ## 📂 Contents
-- 📑 Class PPTs  
-- 📝 Assignment Questions  
-- 📘 Module Notes  
+- 📑 Class Mini_Projects 
+- 📝 C++ OOPS Question  
+- 📘 Module Projects Notes  
 - ❓ Exam Questions & Answers  
 
 ---
