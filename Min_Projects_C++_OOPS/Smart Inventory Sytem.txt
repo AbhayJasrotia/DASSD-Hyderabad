@@ -1,0 +1,55 @@
+1.Title: Smart Inventory System with Dynamic Memory
+and Inheritance
+
+Problem Statement:
+Design a program to manage an inventory system for a store.
+Each item in the store belongs to a specific category (like Electronics or Groceries), but the
+data must be stored and managed without using virtual functions.
+You must handle object relationships, memory allocation, and cleanup properly.
+
+Objectives:
+Implement:
+● Encapsulation (private/protected members)
+● Parameterized Constructors & Destructors
+● Inheritance (Base → Derived classes)
+● Dynamic allocation using pointers (new / delete)
+● Pointer-to-object relationships (no virtual keyword)
+
+Requirements:
+1. Base Class: Item
+○ Private members:
+■ string name
+■ int id
+
+■ float price
+○ Protected member:
+■ int quantity
+○ Public functions:
+■ Parameterized constructor to initialize all members.
+■ void display() — prints item details.
+■ float getTotalValue() — returns price * quantity.
+■ Destructor — prints when the item object is destroyed.
+
+2. Derived Class 1: Electronics
+○ Additional data members:
+■ int warrantyYears
+■ float powerUsage
+○ Constructor should call base class constructor using initializer list.
+○ void displayDetails() — prints both base and derived details.
+○ Destructor prints a message for cleanup.
+
+3. Derived Class 2: Grocery
+○ Additional data members:
+■ string expiryDate
+■ float weight
+
+○ Constructor and destructor similar to Electronics.
+○ Function void displayDetails() to show all info.
+
+4. Main Function Logic:
+○ Ask user how many total items are in inventory.
+○ Dynamically create an array of pointers to Electronics and Grocery
+objects.
+○ For each item, ask the user for category and input details.
+○ Display all item details and total inventory value.
+○ Properly delete all dynamically allocated memory at the end.
