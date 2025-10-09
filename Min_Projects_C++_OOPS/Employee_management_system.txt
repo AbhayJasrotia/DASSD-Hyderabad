@@ -1,0 +1,45 @@
+2.Title: Employee Payroll Management System (with
+Dynamic Bonus Calculation)
+
+Problem Statement:
+Design a C++ program to manage employees of a company.
+Each employee has common details (name, ID, base salary), but different roles (e.g.,
+Manager, Developer) that determine their bonus.
+You must use classes, inheritance, encapsulation, constructors, destructors, and
+pointers to:
+● Store and display employee information.
+● Dynamically allocate memory for employees.
+
+● Compute their total salary (base + bonus).
+● Ensure proper cleanup of allocated memory.
+
+Requirements:
+1. Base Class: Employee
+○ Private Data Members:
+■ string name
+■ int id
+■ float baseSalary
+○ Protected Member:
+■ float bonus
+○ Public Functions:
+■ Parameterized Constructor to initialize name, id, salary.
+■ virtual void calculateBonus() → base version sets bonus = 0.
+■ virtual void display() → prints employee details.
+■ Virtual Destructor (for safe cleanup).
+
+2. Derived Class: Manager (inherits from Employee)
+○ Overrides calculateBonus() → bonus = 40% of baseSalary.
+○ Overrides display() → shows “Manager” and total salary.
+
+3. Derived Class: Developer (inherits from Employee)
+○ Overrides calculateBonus() → bonus = 25% of baseSalary.
+○ Overrides display() → shows “Developer” and total salary.
+
+4. Main Function Logic:
+○ Ask user how many employees to create.
+○ Dynamically create an array of Employee* pointers (using new).
+○ Let the user choose the type (Manager or Developer) for each.
+○ Use runtime polymorphism (Employee* e = new Manager(...)) to store
+objects.
+○ Call calculateBonus() and display() for each employee.
+○ Finally, delete all dynamically allocated objects safely.
