@@ -1,47 +1,56 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Person{
-    public:
-        string name;
-        int age;
-    void setPerson(string n, int a){
-        name = n;
-        age = a;
-    }    
-};
-class Teacher: public Person{
-    public:
-        string subject;
-        float salary;
-    
-    void setTeacher(string s, float sa){
-        subject = s;
-        salary = sa;
-    }
-
-    void display(){
-        cout<<"Teacher name is "<<name<< " his age is "<<age
-        <<" he teaches "<<subject<<" his salary is "<<salary<<endl;
+class Employee {
+public:
+    virtual void bonus() = 0;  // pure virtual function
+    virtual ~Employee() {
+        cout << "Employee Destroyed" << endl;
     }
 };
 
-int main(){
-    Teacher t1;
-    string x;
-    cout<<"Enter the name: "<<endl;
-    cin>>x;
-    int y;
-    cout<<"Enter age: "<<endl;
-    cin>>y;
-    string p;
-    cout<<"Enter subject"<<endl;
-    cin>>p;
-    int q;
-    cout<<"Enter salary: "<<endl;
-    cin>>q;
-    t1.setPerson(x , y);
-    t1.setTeacher(p, q);
-    t1.display();
+class Manager : public Employee {
+private:
+    int baseSalary;
+    int bonusAmount;
+public:
+    Manager(int bs, int b) {
+        baseSalary = bs;
+        bonusAmount = b;
+    }
+
+    void bonus() override {
+        //float total = baseSalary + bonusAmount;
+        cout << "Total salary after bonus added: " << baseSalary + bonusAmount << endl;
+        //return total;
+    }
+};
+
+class Worker : public Employee {
+private:
+    int baseSalary;
+    int hourwork;
+    float bonusAmount;
+
+public:
+    Worker(int bs, int hw, float b) {
+        baseSalary = bs;
+        hourwork = hw;
+        bonusAmount = b;
+    }
+
+    void bonus() override {
+        //float total = baseSalary + bonusAmount;
+        cout << "Total salary after bonus added acc to hours: " 
+        << baseSalary + (hourwork*bonusAmount) << endl;
+        //return total;
+    }
+};
+
+int main() {
+    Manager m1(50000, 10000);
+    m1.bonus();
+    Worker w1(80000, 10, 1000);
+    w1.bonus();
     return 0;
 }

@@ -1,39 +1,28 @@
 #include<iostream>
-#include<string>
 using namespace std;
 
-class Book{
-    private:
-        string title;
-        float price;
+class Car{
     public:
-      Book(string t = "", float p=0.0f){
-        title = t;
-        price = p;
-      }
+        string brand;
+        string model;
+        int price;
 
-    void display(){
-        cout<<"Title: "<<title;
-        cout<<"Price $ "<<price;
-        cout<<"----------------"<<endl;
-    }
+        void input(){
+            cout<<"Enter brand"<<endl;
+            cin>>brand;
+        }
 
-    void input(){
-        cout<<"Enter book name: ";
-        getline(cin,title);
-        cout<<"Enter the price: ";
-        cin>>price;
-        cin.ignore();
-    }
+        void display(){
+            cout<<"Brand is - "<<brand<<endl;
+        }
 };
 
 int main(){
-    Book* bookptr = new Book();
-    cout<<"Enter book details:"<<endl;
-    bookptr->input();
-    cout<<endl;
-    cout<<"Book details: "<<endl;
-    bookptr->display();
-    delete bookptr;
+    Car c1, c2;
+    c1.input();
+    c2. input();
+    c1.display();
+    c2.display();
     return 0;
+
 }

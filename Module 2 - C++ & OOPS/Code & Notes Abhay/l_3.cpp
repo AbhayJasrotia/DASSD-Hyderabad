@@ -1,43 +1,92 @@
 #include <iostream>
 using namespace std;
 
-class Student {
+// Abstract base class
+class Vehicle {
 public:
-    string name;
-    void setStudent(string n) {
-        name = n;
+    // Pure virtual function
+    virtual void displayInfo() = 0;
+
+    // Virtual destructor (good practice)
+    virtual ~Vehicle() {
+        cout << "Vehicle object destroyed" << endl;
     }
 };
 
-class Undergraduate : public Student {
+// Derived class: Car
+class Car : public Vehicle {
+private:
+    string brand;
+    string model;
+    float price;
+
 public:
-    string stream;
-    void setUndergrad(string s) {
-        stream = s;
+    Car(string b, string m, float p) {
+        brand = b;
+        model = m;
+        price = p;
     }
-    // void display() {
-    //     cout << "Name: " << name << " | Stream: " << stream << endl;
-    // }
+
+    void displayInfo() override {
+        cout << "\n--- Car Details ---" << endl;
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Price: Rs." << price << endl;
+    }
 };
 
-class ScholarshipStudent : public Undergraduate {
+// Derived class: Bike
+class Bike : public Vehicle {
+private:
+    string brand;
+    string model;
+    float price;
+
 public:
-    float scholarshipAmount;
-    void setScholarship(float amt) {
-        scholarshipAmount = amt;
+    Bike(string b, string m, float p) {
+        brand = b;
+        model = m;
+        price = p;
     }
-    void display() {
-        cout << "Name: " << name
-             << " | Stream: " << stream
-             << " | Scholarship: " << scholarshipAmount << endl;
+
+    void displayInfo() override {
+        cout << "\n--- Bike Details ---" << endl;
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Price: Rs." << price << endl;
     }
 };
 
 int main() {
-    ScholarshipStudent s1;
-    s1.setStudent("Patrick");
-    s1.setUndergrad("B.Tech");
-    s1.setScholarship(25000);
-    s1.display();
+    Vehicle* vptr;  // Base class pointer
+
+    // --- Input for Car ---
+    string carBrand, carModel;
+    float carPrice;
+    cout << "Enter Car Brand: ";
+    cin >> carBrand;
+    cout << "Enter Car Model: ";
+    cin >> carModel;
+    cout << "Enter Car Price: ";
+    cin >> carPrice;
+
+    Car c(carBrand, carModel, carPrice);
+    vptr = &c;          // Base pointer points to Car
+    vptr->displayInfo(); // Calls Car's displayInfo()
+
+    // --- Input for Bike ---
+    string bikeBrand, bikeModel;
+    float bikePrice;
+    cout << "\nEnter Bike Brand: ";
+    cin >> bikeBrand;
+    cout << "Enter Bike Model: ";
+    cin >> bikeModel;
+    cout << "Enter Bike Price: ";
+    cin >> bikePrice;
+
+    Bike b(bikeBrand, bikeModel, bikePrice);
+    vptr = &b;          // Base pointer points to Bike
+    vptr->displayInfo(); // Calls Bike's displayInfo()
+
     return 0;
 }
